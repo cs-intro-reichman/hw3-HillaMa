@@ -36,8 +36,14 @@ public class Anagram {
 				charToCheck = str1.charAt(i);
 				for(int j = 0; j < str2.length(); j++) {
 					if(charToCheck == str2.charAt(j)) {
-						str2 = str2.substring(0, j) + str2.substring(j + 1, str2.length());
-						break;
+						if(j < str2.length() - 1) {
+							str2 = str2.substring(0, j) + str2.substring(j + 1, str2.length());
+							break;
+						}
+						else {
+							str2 = str2.substring(0, j);
+							break;
+						}
 					}
 				}
 			}
@@ -66,7 +72,17 @@ public class Anagram {
 	// Returns a random anagram of the given string. The random anagram consists of the same
 	// characters as the given string, re-arranged in a random order. 
 	public static String randomAnagram(String str) {
-		// Replace the following statement with your code
-		return "";
+		String newString = "";
+		while(!str.equals("")) {
+			int randomIndex = (int)(Math.random() * str.length());
+			newString = newString + str.charAt(randomIndex);
+			if(randomIndex < str.length() - 1) {
+				str = str.substring(0, randomIndex) + str.substring(randomIndex + 1, str.length());
+			}
+			else {
+				str = str.substring(0, randomIndex);
+			}
+		}
+		return newString;
 	}
 }
