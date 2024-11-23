@@ -28,8 +28,8 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		str1 = preProcess(str1);
-		str2 = preProcess(str2);
+		str1 = preProcess(str1).replace(" ", "");
+		str2 = preProcess(str2).replace(" ", "");
 		char charToCheck;
 		if(str1.length() == str2.length()) {
 			for(int i = 0; i < str1.length(); i++) {
@@ -59,7 +59,7 @@ public class Anagram {
 	// as is. For example, the string "What? No way!" becomes "whatnoway"
 	public static String preProcess(String str) {
 		str = str.toLowerCase();
-		String Letters = "abcdefghijklmnopqrstuvwxyz";
+		String Letters = "abcdefghijklmnopqrstuvwxyz ";
 		String newString = "";
 		for(int i = 0; i <= str.length() - 1; i++) {
 			if(Letters.indexOf(str.charAt(i)) != -1) {

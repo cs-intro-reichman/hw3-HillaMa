@@ -73,7 +73,7 @@ public class Algebra {
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		return (x1 - times(div(x1,x2),x2));
+		return (minus(x1, times(div(x1,x2),x2)));
 	}	
 
 	// Returns the integer part of sqrt(x) 
@@ -82,6 +82,6 @@ public class Algebra {
 		while(times(root,root) <= x) {
 			root++;
 		}
-		return root - 1;
+		return minus(root, 1);
 	}	  	  
 }
