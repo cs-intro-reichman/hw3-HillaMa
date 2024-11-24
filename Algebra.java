@@ -25,43 +25,89 @@ public class Algebra {
 
 	// Returns x1 + x2
 	public static int plus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		while(x2 != 0) {
+			x1++;
+			x2--;
+		}
+		return x1;
 	}
 
 	// Returns x1 - x2
 	public static int minus(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		while(x2 != 0) {
+			x1--;
+			x2--;
+		}
+		return x1;
 	}
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		boolean isNegative = false;
+		if (x1 < 0 && x2 > 0) {
+			isNegative = true;
+			x1 = minus(0, x1);
+		}
+		else if(x1 > 0 && x2 < 0) {
+			isNegative = true;
+			x2 = minus(0, x2);
+		}
+		else if(x1 < 0 && x2 < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+		}
+		int multiplier = 0;
+		while(x2 != 0) {
+			multiplier = plus(multiplier,x1);
+			x2--;
+		}
+		return isNegative ? minus(0, multiplier) : multiplier;
 	}
 
 	// Returns x^n (for n >= 0)
 	public static int pow(int x, int n) {
-		// Replace the following statement with your code
-		return 0;
+		int power = 1;
+		while(n != 0) {
+			power = times(power,x);
+			n--;
+		}
+		return power;
 	}
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		boolean isNegative = false;
+		if (x1 < 0 && x2 > 0) {
+			isNegative = true;
+			x1 = minus(0, x1);
+		}
+		else if(x1 > 0 && x2 < 0) {
+			isNegative = true;
+			x2 = minus(0, x2);
+		}
+		else if(x1 < 0 && x2 < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+		}
+		int counter = 0;
+		while(x1 >= x2) {
+			x1 = minus(x1, x2);
+			counter++;
+		}
+		return isNegative ? minus(0, counter) : counter;
 	}
 
 	// Returns x1 % x2
 	public static int mod(int x1, int x2) {
-		// Replace the following statement with your code
-		return 0;
+		return (minus(x1, times(div(x1,x2),x2)));
 	}	
 
 	// Returns the integer part of sqrt(x) 
 	public static int sqrt(int x) {
-		// Replace the following statement with your code
-		return 0;
+		int root = 1;
+		while(times(root,root) <= x) {
+			root++;
+		}
+		return minus(root, 1);
 	}	  	  
 }
