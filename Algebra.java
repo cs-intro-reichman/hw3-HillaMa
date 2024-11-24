@@ -43,12 +43,25 @@ public class Algebra {
 
 	// Returns x1 * x2
 	public static int times(int x1, int x2) {
+		boolean isNegative = false;
+		if (x1 < 0 && x2 > 0) {
+			isNegative = true;
+			x1 = minus(0, x1);
+		}
+		else if(x1 > 0 && x2 < 0) {
+			isNegative = true;
+			x2 = minus(0, x2);
+		}
+		else if(x1 < 0 && x2 < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+		}
 		int multiplier = 0;
 		while(x2 != 0) {
 			multiplier = plus(multiplier,x1);
 			x2--;
 		}
-		return multiplier;
+		return isNegative ? minus(0, multiplier) : multiplier;
 	}
 
 	// Returns x^n (for n >= 0)
@@ -63,12 +76,25 @@ public class Algebra {
 
 	// Returns the integer part of x1 / x2 
 	public static int div(int x1, int x2) {
+		boolean isNegative = false;
+		if (x1 < 0 && x2 > 0) {
+			isNegative = true;
+			x1 = minus(0, x1);
+		}
+		else if(x1 > 0 && x2 < 0) {
+			isNegative = true;
+			x2 = minus(0, x2);
+		}
+		else if(x1 < 0 && x2 < 0) {
+			x1 = minus(0, x1);
+			x2 = minus(0, x2);
+		}
 		int counter = 0;
 		while(x1 >= x2) {
-			x1 = minus(x1,x2);
+			x1 = minus(x1, x2);
 			counter++;
 		}
-		return counter;
+		return isNegative ? minus(0, counter) : counter;
 	}
 
 	// Returns x1 % x2
